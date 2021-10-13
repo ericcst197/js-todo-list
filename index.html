@@ -7,18 +7,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To-do-List</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
 </head>
 
 <body>
-    <div class="container">
-        <form action="/add" id="toDoForm">
-            <h1>To-do List</h1>
-            <input type="text" name="task" placeholder="New Task...">
-            <button>Add</button>
-        </form>
-        <div>
-            <ul id="toDoList"></ul>
-        </div>
+    <form action="/add" id="toDoForm">
+        <h1>To-do List</h1>
+        <input id="taskbar" type="text" name="task" placeholder="New Task..." maxlength="40">
+        <button id="add"><span class="material-icons">add</span></button>
+    </form>
+    <div>
+        <ul id="toDoList"></ul>
     </div>
     <script src="script.js"></script>
 </body>
