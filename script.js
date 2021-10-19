@@ -5,28 +5,35 @@ const list = document.querySelector('#toDoList')
 form.addEventListener("submit", (e) => {
     e.preventDefault();
     const taskInput = form.elements.task;
-    addTask(taskInput.value);
+    if(!taskInput.value){
+        alert("Opps, there is nothing to do. Please enter some task.")
+    } else {
+        addTask(taskInput.value)
+    };
     taskInput.value = "";
 })
 
 
 const addTask = (task) => {
     const div = document.createElement('div');
+    // Create new task
     const newTask = document.createElement('li');
-
+    div.append(newTask);
+    newTask.append(task);
     // Done button for every task
     const doneBut = document.createElement('button');
+    doneBut.innerHTML = "<i class='fas fa-check'></i>";
+    doneBut.classList.add('done-btn');
     doneBut.addEventListener('click', doneTask);
-    doneBut.append(document.createTextNode("Done"));
-
+    div.appendChild(doneBut);
     // Delete button for every task
     const delBut = document.createElement('button');
-    delBut.addEventListener('click',delTask);
-    delBut.appendChild(document.createTextNode("Delete"));
-
+    delBut.innerHTML = "<i class='fas fa-trash'></i>";
+    delBut.classList.add('del-btn');
+    delBut.addEventListener('click', delTask);
+    div.appendChild(delBut);
+    // Append div to ul
     list.append(div);
-    div.append(newTask, doneBut, delBut);
-    newTask.append(task);
 }
 
 function delTask() {
@@ -35,7 +42,6 @@ function delTask() {
 }
 
 function doneTask() {
-    let li = this.parentNode.list;
-    li.classlist.add("done");
+    let li = this.parentNode;
+    li.classList.add('done');
 }
-    
